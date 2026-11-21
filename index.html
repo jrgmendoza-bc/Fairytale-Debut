@@ -327,7 +327,7 @@ section.tight{min-height:auto;padding:56px 24px}
       <div class="btns"><button type="button" class="btn" id="rsvpBtn">Send my RSVP</button></div>
     </form>
     <p id="rsvpOut" class="reveal"></p>
-    <p class="note reveal">Your reply goes straight to the family's inbox.</p>
+    <p class="note reveal">Tap send and your email app opens with your reply ready for the family.</p>
   </section>
 
   <section id="gift" class="tight">
@@ -377,29 +377,26 @@ document.querySelectorAll('[data-list]').forEach(ol=>{
   a.href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent("Pauline Guinanoy's Debut")+'&dates=20261219/20261220&details='+encodeURIComponent('A fairytale evening celebrating Pauline\'s 18th birthday.');
 })();
 
-/* ===== RSVP: emailed through FormSubmit to the family inbox ===== */
+/* ===== RSVP: opens an email to the family, ready to send ===== */
 (function(){
   const TO='theinboxgremlin@gmail.com';
   const btn=document.getElementById('rsvpBtn'),out=document.getElementById('rsvpOut');
   if(!btn)return;
-  btn.addEventListener('click',async()=>{
+  btn.addEventListener('click',function(){
     const v=id=>document.getElementById(id).value.trim();
     const name=v('rn');
     if(!name){out.textContent='Please add your name first.';document.getElementById('rn').focus();return;}
-    const data={name:name,reply:v('rg'),guests:v('rc'),message:v('rm')||'-',_subject:'RSVP: '+name+" - Pauline's Debut",_template:'table',_captcha:'false'};
-    btn.disabled=true;out.textContent='Sending your reply…';
-    try{
-      const r=await fetch('https://formsubmit.co/ajax/'+TO,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
-      const j=await r.json();
-      if(r.ok&&String(j.success)!=='false'){out.textContent='Thank you, '+name+'! Your reply has been sent.';btn.textContent='Sent ✦';return;}
-      throw new Error('send failed');
-    }catch(e){
-      const body="RSVP: Pauline Guinanoy's Debut (Dec 19, 2026)\nName: "+name+"\nReply: "+data.reply+"\nGuests: "+data.guests+"\nMessage: "+data.message;
-      out.textContent="We couldn't send it automatically.";
-      const a=document.createElement('a');a.className='btn';a.style.marginTop='10px';a.textContent='Send by email';
-      a.href='mailto:'+TO+'?subject='+encodeURIComponent(data._subject)+'&body='+encodeURIComponent(body);
-      out.appendChild(document.createElement('br'));out.appendChild(a);
-    }finally{btn.disabled=false;}
+    const subject='RSVP: '+name+" - Pauline's Debut";
+    const body="RSVP: Pauline Guinanoy's Debut (Dec 19, 2026)\nName: "+name+"\nReply: "+v('rg')+"\nGuests: "+v('rc')+"\nMessage: "+(v('rm')||'-')+"\n\nSent from the invitation page.";
+    const mail='mailto:'+TO+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    const gmail='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(TO)+'&su='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    out.textContent='Almost done, '+name+'! Your email app is opening. Just press Send.';
+    const row=document.createElement('div');row.className='btns';
+    const mk=(label,href)=>{const x=document.createElement('a');x.className='btn';x.textContent=label;x.href=href;if(href.indexOf('http')===0){x.target='_blank';x.rel='noopener';}return x;};
+    row.appendChild(mk('Open email app',mail));
+    row.appendChild(mk('Open in Gmail',gmail));
+    out.appendChild(row);
+    window.location.href=mail;
   });
 })();
 
