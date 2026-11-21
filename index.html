@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pauline's Debut Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --periwinkle:#8e9fbf;
+  --mauve:#a38ba8;
+  --rose:#d9a0a4;
+  --blush:#e3c2b6;
+  --sage:#a5a58a;
+  --ink:#3a3050;
+  --cream:#fbf1ec;
+  --gold:#f6dfae;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  color:var(--cream);
+  background:linear-gradient(165deg,#3a3050 0%,#51446a 30%,#6f7799 62%,#a58fa6 85%,#c9a2a6 100%);
+  background-attachment:fixed;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.garland{position:fixed;z-index:0;pointer-events:none;width:min(46vw,340px);aspect-ratio:1}
+.garland svg{position:absolute;overflow:visible}
+.g-tl{top:-30px;left:-30px}
+.g-tr{top:-30px;right:-30px;transform:scaleX(-1)}
+.g-bl{bottom:-40px;left:-30px;transform:scaleY(-1)}
+.g-br{bottom:-40px;right:-30px;transform:scale(-1,-1)}
+.sway{transform-origin:50% 50%;animation:sway 7s ease-in-out infinite}
+@keyframes sway{0%,100%{rotate:-4deg}50%{rotate:5deg}}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -6px}}
+
+main{position:relative;z-index:2}
+section{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:72px 24px}
+.card{
+  width:min(92vw,560px);
+  padding:44px 28px 40px;
+  background:rgba(58,48,80,.38);
+  border:1px solid rgba(227,194,182,.45);
+  border-radius:200px 200px 28px 28px;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  box-shadow:0 0 60px rgba(217,160,164,.18),inset 0 0 40px rgba(227,194,182,.08);
+}
+.eyebrow{font-family:'Cinzel',serif;letter-spacing:.32em;font-size:.72rem;color:var(--blush);text-transform:uppercase}
+.once{font-style:italic;font-size:1.2rem;color:var(--blush);margin:18px 0 6px}
+.name{
+  font-family:'Great Vibes',cursive;font-weight:400;
+  font-size:clamp(3.2rem,15vw,5.6rem);line-height:1.05;
+  background:linear-gradient(90deg,var(--blush),var(--rose),var(--mauve),var(--rose),var(--blush));
+  background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmer 9s linear infinite;
+  filter:drop-shadow(0 2px 14px rgba(217,160,164,.35));
+}
+@keyframes shimmer{to{background-position:200% 0}}
+.surname{font-family:'Cinzel',serif;letter-spacing:.4em;font-size:.95rem;margin-top:6px;color:var(--cream)}
+.debut{margin-top:22px;font-size:1.25rem;font-style:italic;color:var(--blush)}
+.eighteen{font-family:'Cinzel',serif;font-size:2.6rem;color:var(--gold);margin:4px 0 0;text-shadow:0 0 18px rgba(246,223,174,.6)}
+.divider{display:flex;align-items:center;gap:12px;justify-content:center;margin:22px auto 18px;color:var(--rose)}
+.divider i{display:block;height:1px;width:64px;background:linear-gradient(90deg,transparent,var(--rose),transparent)}
+.date{font-family:'Cinzel',serif;letter-spacing:.2em;font-size:1rem}
+.scroll{margin-top:30px;font-size:.85rem;letter-spacing:.25em;text-transform:uppercase;color:var(--blush);animation:bob 2.6s ease-in-out infinite}
+
+h2{font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(2.4rem,10vw,3.6rem);color:var(--blush);margin-bottom:6px}
+.sub{font-style:italic;font-size:1.15rem;color:var(--cream);opacity:.9;max-width:30ch;margin:0 auto 30px}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:min(92vw,520px)}
+.unit{
+  padding:20px 4px 14px;border-radius:18px;
+  background:rgba(251,241,236,.1);
+  border:1px solid rgba(227,194,182,.4);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  box-shadow:0 0 24px rgba(142,159,191,.25);
+}
+.unit b{display:block;font-family:'Cinzel',serif;font-weight:500;font-size:clamp(1.7rem,8vw,2.6rem);color:var(--cream);font-variant-numeric:tabular-nums}
+.unit span{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blush)}
+.done{font-family:'Great Vibes',cursive;font-size:2.6rem;color:var(--gold);display:none}
+
+.details{width:min(92vw,520px);display:grid;gap:14px}
+.row{padding:18px 20px;border-radius:18px;background:rgba(58,48,80,.4);border:1px solid rgba(163,139,168,.55)}
+.row small{display:block;font-family:'Cinzel',serif;letter-spacing:.28em;font-size:.65rem;color:var(--rose);margin-bottom:6px;text-transform:uppercase}
+.row p{font-size:1.25rem}
+.note{margin-top:26px;font-style:italic;color:var(--blush);max-width:34ch}
+footer{padding:0 24px 90px;text-align:center;position:relative;z-index:2}
+footer .sig{font-family:'Great Vibes',cursive;font-size:2.4rem;color:var(--rose)}
+footer p{font-style:italic;color:var(--blush)}
+
+section.tight{min-height:auto;padding:56px 24px}
+.ph{border-bottom:1px dotted var(--rose);cursor:text}
+.btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.btn{display:inline-block;padding:11px 20px;border-radius:999px;border:1px solid var(--rose);background:rgba(217,160,164,.18);color:var(--cream);font-family:'Cinzel',serif;letter-spacing:.14em;font-size:.72rem;text-decoration:none;text-transform:uppercase;cursor:pointer;transition:background .3s,box-shadow .3s}
+.btn:hover{background:rgba(217,160,164,.38);box-shadow:0 0 18px rgba(217,160,164,.5)}
+.wrap{width:min(92vw,520px)}
+.timeline{list-style:none;text-align:left;position:relative;padding-left:26px}
+.timeline:before{content:'';position:absolute;left:7px;top:6px;bottom:6px;width:1px;background:linear-gradient(var(--rose),var(--periwinkle))}
+.timeline li{position:relative;padding:8px 0}
+.timeline li:before{content:'';position:absolute;left:-23px;top:15px;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+.timeline b{font-family:'Cinzel',serif;font-weight:500;font-size:.85rem;color:var(--rose);display:block;letter-spacing:.12em}
+.timeline span{font-size:1.15rem}
+.swatches{display:flex;gap:10px;justify-content:center;margin:6px 0 18px}
+.sw{width:54px;text-align:center;font-size:.7rem;color:var(--blush)}
+.sw i{display:block;width:54px;height:54px;border-radius:50%;margin-bottom:6px;border:2px solid rgba(251,241,236,.55);box-shadow:0 0 16px rgba(251,241,236,.18)}
+.acc{display:grid;gap:10px;width:min(92vw,520px);text-align:left}
+.acc details{border-radius:18px;background:rgba(58,48,80,.42);border:1px solid rgba(163,139,168,.55);padding:0 18px}
+.acc summary{list-style:none;cursor:pointer;padding:16px 0;font-family:'Cinzel',serif;letter-spacing:.14em;font-size:.9rem;display:flex;justify-content:space-between;align-items:center}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary:after{content:'✦';color:var(--rose);transition:transform .4s}
+.acc details[open] summary:after{transform:rotate(90deg)}
+.acc small{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;letter-spacing:0;font-size:.95rem;color:var(--blush);text-transform:none;margin-top:2px}
+.acc ol{padding:0 0 16px 22px;columns:2;column-gap:20px;font-size:1.05rem}
+.acc ol li{padding:2px 0;break-inside:avoid}
+.ent{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:min(92vw,520px)}
+.ent .row{text-align:center}
+.ent .row.full{grid-column:1/-1}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:min(92vw,520px)}
+.gallery div{aspect-ratio:3/4;border-radius:999px 999px 14px 14px;border:1px solid rgba(227,194,182,.5);background:linear-gradient(160deg,rgba(163,139,168,.35),rgba(217,160,164,.25));display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.8rem;color:var(--blush);gap:6px}
+.gallery svg{width:34px;height:34px;color:var(--rose)}
+.form{display:grid;gap:12px;width:min(92vw,520px);text-align:left}
+.form label{font-family:'Cinzel',serif;letter-spacing:.2em;font-size:.65rem;text-transform:uppercase;color:var(--rose)}
+.form input,.form select,.form textarea{width:100%;margin-top:6px;padding:13px 14px;border-radius:14px;border:1px solid rgba(227,194,182,.5);background:rgba(251,241,236,.12);color:var(--cream);font-family:'Cormorant Garamond',serif;font-size:16px}
+.form option{color:#3a3050}
+.form input::placeholder,.form textarea::placeholder{color:rgba(251,241,236,.55)}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 14px rgba(246,223,174,.35)}
+#rsvpOut{margin-top:14px;font-style:italic;color:var(--gold);white-space:pre-wrap;max-width:34ch}
+.music{position:fixed;right:14px;bottom:14px;z-index:5;display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid var(--rose);background:rgba(58,48,80,.7);color:var(--cream);font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 0 18px rgba(217,160,164,.35)}
+.music b{font-size:1.1rem;color:var(--gold);font-weight:400}
+.music:not(.on){animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 28px rgba(246,223,174,.75)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 1.2s ease,transform 1.2s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .sway,.scroll,.name{animation:none}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="bloom" viewBox="-50 -50 100 100" overflow="visible">
+      <g fill="currentColor" fill-opacity=".88">
+        <ellipse cx="0" cy="-24" rx="11" ry="22"/>
+        <ellipse cx="0" cy="-24" rx="11" ry="22" transform="rotate(45)"/>
+        <ellipse cx="0" cy="-24" rx="11" ry="22" transform="rotate(90)"/>
+        <ellipse cx="0" cy="-24" rx="11" ry="22" transform="rotate(135)"/>
+        <ellipse cx="0" cy="-24" rx="11" ry="22" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-24" rx="11" ry="22" transform="rotate(225)"/>
+        <ellipse cx="0" cy="-24" rx="11" ry="22" transform="rotate(270)"/>
+        <ellipse cx="0" cy="-24" rx="11" ry="22" transform="rotate(315)"/>
+      </g>
+      <g fill="#fff" fill-opacity=".28">
+        <ellipse cx="0" cy="-14" rx="7" ry="13" transform="rotate(22)"/>
+        <ellipse cx="0" cy="-14" rx="7" ry="13" transform="rotate(112)"/>
+        <ellipse cx="0" cy="-14" rx="7" ry="13" transform="rotate(202)"/>
+        <ellipse cx="0" cy="-14" rx="7" ry="13" transform="rotate(292)"/>
+      </g>
+      <circle r="8" fill="#f6dfae"/>
+      <circle r="3" fill="#d9a0a4" cx="-2" cy="-2"/>
+    </symbol>
+    <symbol id="leaf" viewBox="0 0 40 90" overflow="visible">
+      <path d="M20 88C2 62 2 26 20 2c18 24 18 60 0 86z" fill="currentColor"/>
+      <path d="M20 84V12" stroke="#fff" stroke-opacity=".3" stroke-width="1.5" fill="none"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- corner florals -->
+<div class="garland g-tl" aria-hidden="true">
+  <svg style="left:10%;top:18%;width:120px;height:120px;color:#a5a58a;rotate:-30deg"><use href="#leaf"/></svg>
+  <svg style="left:34%;top:4%;width:80px;height:180px;color:#a5a58a;rotate:35deg"><use href="#leaf"/></svg>
+  <svg class="sway" style="left:2%;top:2%;width:150px;height:150px;color:#d9a0a4"><use href="#bloom"/></svg>
+  <svg class="sway" style="left:38%;top:18%;width:100px;height:100px;color:#a38ba8;animation-delay:-2s"><use href="#bloom"/></svg>
+  <svg class="sway" style="left:6%;top:48%;width:84px;height:84px;color:#8e9fbf;animation-delay:-4s"><use href="#bloom"/></svg>
+</div>
+<div class="garland g-tr" aria-hidden="true">
+  <svg style="left:10%;top:18%;width:120px;height:120px;color:#a5a58a;rotate:-30deg"><use href="#leaf"/></svg>
+  <svg class="sway" style="left:2%;top:2%;width:130px;height:130px;color:#a38ba8;animation-delay:-1s"><use href="#bloom"/></svg>
+  <svg class="sway" style="left:36%;top:20%;width:90px;height:90px;color:#e3c2b6;animation-delay:-3s"><use href="#bloom"/></svg>
+  <svg class="sway" style="left:8%;top:46%;width:70px;height:70px;color:#d9a0a4;animation-delay:-5s"><use href="#bloom"/></svg>
+</div>
+<div class="garland g-bl" aria-hidden="true">
+  <svg style="left:12%;top:20%;width:110px;height:110px;color:#a5a58a;rotate:-20deg"><use href="#leaf"/></svg>
+  <svg class="sway" style="left:2%;top:2%;width:140px;height:140px;color:#e3c2b6;animation-delay:-2s"><use href="#bloom"/></svg>
+  <svg class="sway" style="left:38%;top:18%;width:96px;height:96px;color:#8e9fbf;animation-delay:-4s"><use href="#bloom"/></svg>
+</div>
+<div class="garland g-br" aria-hidden="true">
+  <svg style="left:12%;top:20%;width:110px;height:110px;color:#a5a58a;rotate:-20deg"><use href="#leaf"/></svg>
+  <svg class="sway" style="left:2%;top:2%;width:140px;height:140px;color:#d9a0a4;animation-delay:-3s"><use href="#bloom"/></svg>
+  <svg class="sway" style="left:38%;top:18%;width:96px;height:96px;color:#a38ba8;animation-delay:-1s"><use href="#bloom"/></svg>
+</div>
+
+<canvas id="fx" aria-hidden="true"></canvas>
+<button id="music" class="music" type="button" aria-pressed="false"><b>♪</b><span>Play music</span></button>
+
+<main>
+  <section id="hero">
+    <div class="card reveal">
+      <div class="eyebrow">Fairytale Florals</div>
+      <p class="once">Once upon a time, a princess turned</p>
+      <div class="eighteen">18</div>
+      <h1 class="name">Pauline</h1>
+      <div class="surname">GUINANOY</div>
+      <p class="debut">You are enchantingly invited to her debut</p>
+      <div class="divider"><i></i>✦<i></i></div>
+      <div class="date">DECEMBER 19, 2026</div>
+    </div>
+    <div class="scroll">Scroll ↓</div>
+  </section>
+
+  <section id="countdown">
+    <h2 class="reveal">The magic begins in</h2>
+    <p class="sub reveal">Every petal and firefly is counting down with us.</p>
+    <div class="count reveal" id="count">
+      <div class="unit"><b id="d">00</b><span>Days</span></div>
+      <div class="unit"><b id="h">00</b><span>Hours</span></div>
+      <div class="unit"><b id="m">00</b><span>Minutes</span></div>
+      <div class="unit"><b id="s">00</b><span>Seconds</span></div>
+    </div>
+    <div class="done" id="done">The celebration is here!</div>
+  </section>
+
+  <section id="details" class="tight">
+    <h2 class="reveal">Save the date</h2>
+    <div class="details reveal">
+      <div class="row"><small>Date</small><p>Saturday, December 19, 2026</p></div>
+      <div class="row"><small>Time</small><p><span class="ph">5:00 PM</span> onwards</p></div>
+      <div class="row"><small>Venue</small><p><span class="ph">Venue Name</span><br><span class="ph">Street, Baguio City</span></p></div>
+    </div>
+    <div class="btns reveal">
+      <a class="btn" id="calBtn" href="#" target="_blank" rel="noopener">Add to calendar</a>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Baguio+City" target="_blank" rel="noopener">View map</a>
+    </div>
+    <div id="detailRows" hidden></div>
+  </section>
+
+  <section id="program" class="tight">
+    <h2 class="reveal">The enchanted evening</h2>
+    <p class="sub reveal">Sample program: times to be confirmed.</p>
+    <ul class="timeline wrap reveal">
+      <li><b class="ph">4:30 PM</b><span>Guests arrive &amp; welcome</span></li>
+      <li><b class="ph">5:00 PM</b><span>Grand entrance of the celebrant</span></li>
+      <li><b class="ph">5:30 PM</b><span>Dinner &amp; toast</span></li>
+      <li><b class="ph">6:30 PM</b><span>Cotillion &amp; 18 Roses</span></li>
+      <li><b class="ph">7:30 PM</b><span>18 Candles &amp; 18 Treasures</span></li>
+      <li><b class="ph">8:30 PM</b><span>Cake cutting &amp; party</span></li>
+    </ul>
+  </section>
+
+  <section id="dress" class="tight">
+    <h2 class="reveal">Dress code</h2>
+    <div class="swatches reveal">
+      <div class="sw"><i style="background:#8e9fbf"></i>Periwinkle</div>
+      <div class="sw"><i style="background:#a38ba8"></i>Mauve</div>
+      <div class="sw"><i style="background:#d9a0a4"></i>Rose</div>
+      <div class="sw"><i style="background:#e3c2b6"></i>Blush</div>
+      <div class="sw"><i style="background:#a5a58a"></i>Sage</div>
+    </div>
+    <p class="note reveal" style="margin-top:0"><span class="ph">Garden formal.</span> Come in soft pastels and florals. Please avoid white, which is reserved for the celebrant.</p>
+  </section>
+
+  <section id="eighteens" class="tight">
+    <h2 class="reveal">Her royal court</h2>
+    <p class="sub reveal">Tap to open each circle of honor.</p>
+    <div class="acc reveal">
+      <details><summary><span>18 Roses<small>Her special dance partners</small></span></summary><ol data-list="roses"></ol></details>
+      <details><summary><span>18 Candles<small>Words of love and wisdom</small></span></summary><ol data-list="candles"></ol></details>
+      <details><summary><span>18 Treasures<small>Gifts of meaning</small></span></summary><ol data-list="treasures"></ol></details>
+      <details><summary><span>18 Blue Bills<small>Wishes for a bright future</small></span></summary><ol data-list="bills"></ol></details>
+    </div>
+  </section>
+
+  <section id="entourage" class="tight">
+    <h2 class="reveal">With love, her family</h2>
+    <div class="ent reveal">
+      <div class="row"><small>Her mother</small><p class="ph">Mother's Name</p></div>
+      <div class="row"><small>Her father</small><p class="ph">Father's Name</p></div>
+      <div class="row"><small>Ninang</small><p class="ph">Name Here</p></div>
+      <div class="row"><small>Ninong</small><p class="ph">Name Here</p></div>
+      <div class="row full"><small>Principal sponsors</small><p class="ph">Names to be added</p></div>
+    </div>
+  </section>
+
+  <section id="gallery" class="tight">
+    <h2 class="reveal">Her story so far</h2>
+    <div class="gallery reveal">
+      <div><svg><use href="#bloom"/></svg>Photo 1</div>
+      <div><svg><use href="#bloom"/></svg>Photo 2</div>
+      <div><svg><use href="#bloom"/></svg>Photo 3</div>
+    </div>
+  </section>
+
+  <section id="rsvp" class="tight">
+    <h2 class="reveal">Kindly reply</h2>
+    <p class="sub reveal">Please let us know by <span class="ph">December 5, 2026</span>.</p>
+    <form class="form reveal" id="rsvpForm" autocomplete="off">
+      <div><label for="rn">Your name</label><input id="rn" type="text" placeholder="Full name"></div>
+      <div><label for="rg">Will you come?</label>
+        <select id="rg"><option>Joyfully accepts</option><option>Regretfully declines</option></select></div>
+      <div><label for="rc">Number of guests</label>
+        <select id="rc"><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+      <div><label for="rm">A message for Pauline</label><textarea id="rm" rows="3" placeholder="Write your wishes…"></textarea></div>
+      <div class="btns"><button type="button" class="btn" id="rsvpBtn">Copy my RSVP</button></div>
+    </form>
+    <p id="rsvpOut" class="reveal"></p>
+    <p class="note reveal">Paste it to <span class="ph">09XX XXX XXXX</span> or message the family on <span class="ph">Messenger</span>.</p>
+  </section>
+
+  <section id="gift" class="tight">
+    <h2 class="reveal">A little note</h2>
+    <p class="note reveal" style="margin-top:0">Your presence is the greatest gift we could wish for. Should you wish to give something more, a contribution toward her dreams, <span class="ph">GCash / bank details</span>, would be warmly appreciated.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="sig reveal">Pauline</div>
+  <p class="reveal">…and they celebrated happily ever after.</p>
+</footer>
+
+<script>
+/* ===== Edit these ===== */
+const CONFIG = {
+  target: '2026-12-19T00:00:00+08:00',   // Philippine time
+  dateText: 'Saturday, December 19, 2026',
+  time: '',    // e.g. '5:00 PM'
+  venue: ''    // e.g. 'Venue name, Baguio City'
+};
+
+/* ===== Details ===== */
+(function(){
+  const rows=[['Date',CONFIG.dateText]];
+  if(CONFIG.time) rows.push(['Time',CONFIG.time]);
+  if(CONFIG.venue) rows.push(['Venue',CONFIG.venue]);
+  if(!CONFIG.time||!CONFIG.venue) rows.push(['More to come','Time, venue and program details will follow soon.']);
+  const el=document.getElementById('detailRows')||document.createElement('div');
+  rows.forEach(r=>{
+    const d=document.createElement('div');d.className='row';
+    const s=document.createElement('small');s.textContent=r[0];
+    const p=document.createElement('p');p.textContent=r[1];
+    d.append(s,p);el.appendChild(d);
+  });
+})();
+
+/* ===== The 18s (placeholder names) ===== */
+document.querySelectorAll('[data-list]').forEach(ol=>{
+  for(let i=0;i<18;i++){const li=document.createElement('li');li.textContent='Name Here';ol.appendChild(li);}
+});
+
+/* ===== Calendar link ===== */
+(function(){
+  const a=document.getElementById('calBtn');
+  if(!a)return;
+  a.href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent("Pauline Guinanoy's Debut")+'&dates=20261219/20261220&details='+encodeURIComponent('A fairytale evening celebrating Pauline\'s 18th birthday.');
+})();
+
+/* ===== RSVP (copies a message; nothing is sent) ===== */
+(function(){
+  const btn=document.getElementById('rsvpBtn'),out=document.getElementById('rsvpOut');
+  if(!btn)return;
+  btn.addEventListener('click',async()=>{
+    const v=id=>document.getElementById(id).value.trim();
+    const text="RSVP: Pauline Guinanoy's Debut (Dec 19, 2026)\nName: "+(v('rn')||'-')+"\nReply: "+v('rg')+"\nGuests: "+v('rc')+"\nMessage: "+(v('rm')||'-');
+    try{await navigator.clipboard.writeText(text);out.textContent='Copied! Paste it in a message to the family.';}
+    catch(e){out.textContent=text;}
+  });
+})();
+
+/* ===== Music: Canon in D (simple arrangement, synthesized in the browser) ===== */
+(function(){
+  const btn=document.getElementById('music');if(!btn)return;
+  const AC=window.AudioContext||window.webkitAudioContext;
+  if(!AC){btn.style.display='none';return;}
+  const HALF=2.3;
+  const bass=[50,45,47,42,43,38,43,45];
+  const chords=[[62,66,69,74],[61,64,69,73],[62,66,71,74],[61,66,69,73],[62,67,71,74],[62,66,69,74],[62,67,71,74],[61,64,69,73]];
+  const mel=[78,76,74,73,71,69,71,73];
+  const plan=[['b','p'],['b','p','m'],['b','p','q'],['b','p','q','m'],['b','p','e'],['b','p','e','m'],['b','p','q']];
+  let ac,master,nextT=0,cyc=0,started=false,on=false;
+  const hz=m=>440*Math.pow(2,(m-69)/12);
+  function build(){
+    ac=new AC();
+    master=ac.createGain();master.gain.value=.55;
+    const comp=ac.createDynamicsCompressor();
+    const verb=ac.createConvolver();
+    const len=Math.floor(ac.sampleRate*2.8),buf=ac.createBuffer(2,len,ac.sampleRate);
+    for(let c=0;c<2;c++){const d=buf.getChannelData(c);for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,2.6);}
+    verb.buffer=buf;
+    const wet=ac.createGain();wet.gain.value=.35;
+    master.connect(comp);master.connect(verb);verb.connect(wet);wet.connect(comp);comp.connect(ac.destination);
+  }
+  function tone(m,t,dur,vol,kind){
+    const o=ac.createOscillator(),o2=ac.createOscillator(),g=ac.createGain(),g2=ac.createGain();
+    o.type=kind==='pad'?'sine':'triangle';o2.type='sine';
+    o.frequency.value=hz(m);o2.frequency.value=hz(m)*2;
+    const a=kind==='pad'?.8:.012;
+    g.gain.setValueAtTime(0,t);
+    g.gain.linearRampToValueAtTime(vol,t+a);
+    g.gain.exponentialRampToValueAtTime(.0008,t+dur);
+    g2.gain.value=.25;
+    o.connect(g);o2.connect(g2);g2.connect(g);g.connect(master);
+    o.start(t);o2.start(t);o.stop(t+dur+.05);o2.stop(t+dur+.05);
+  }
+  function cycle(t0,n){
+    const L=plan[n%plan.length];
+    for(let i=0;i<8;i++){
+      const t=t0+i*HALF,ch=chords[i];
+      if(L.includes('b'))tone(bass[i],t,HALF*1.9,.22,'b');
+      if(L.includes('p'))[0,1,2].forEach(k=>tone(ch[k]-12,t,HALF*1.9,.05,'pad'));
+      if(L.includes('m'))tone(mel[i],t,HALF*1.7,.16,'m');
+      if(L.includes('q'))[1,3].forEach((k,j)=>tone(ch[k],t+j*HALF/2,HALF*.9,.09,'q'));
+      if(L.includes('e'))[0,2,1,3].forEach((k,j)=>tone(ch[k],t+j*HALF/4,HALF*.6,.075,'e'));
+    }
+  }
+  function pump(){while(nextT<ac.currentTime+6){cycle(nextT,cyc++);nextT+=8*HALF;}}
+  function ui(){btn.classList.toggle('on',on);btn.setAttribute('aria-pressed',on?'true':'false');btn.querySelector('span').textContent=on?'Pause music':'Play music';}
+  async function play(){
+    started=true;on=true;
+    if(!ac){build();nextT=ac.currentTime+.2;setInterval(()=>{if(on)pump();},1000);}
+    try{await ac.resume();}catch(e){}
+    pump();ui();
+  }
+  function pause(){on=false;try{ac.suspend();}catch(e){}ui();}
+  btn.addEventListener('click',()=>{on?pause():play();});
+  document.addEventListener('pointerdown',e=>{if(!started&&!e.target.closest('#music'))play();});
+  document.addEventListener('visibilitychange',()=>{if(!ac||!started)return;if(document.hidden){ac.suspend();}else if(on){ac.resume();}});
+})();
+
+/* ===== Countdown ===== */
+(function(){
+  const t=new Date(CONFIG.target).getTime();
+  const $=id=>document.getElementById(id);
+  const pad=n=>String(n).padStart(2,'0');
+  function tick(){
+    let diff=t-Date.now();
+    if(diff<=0){$('count').style.display='none';$('done').style.display='block';return;}
+    const s=Math.floor(diff/1000);
+    $('d').textContent=pad(Math.floor(s/86400));
+    $('h').textContent=pad(Math.floor(s%86400/3600));
+    $('m').textContent=pad(Math.floor(s%3600/60));
+    $('s').textContent=pad(s%60);
+  }
+  tick();setInterval(tick,1000);
+})();
+
+/* ===== Scroll reveal ===== */
+(function(){
+  const els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return;}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.15});
+  els.forEach(e=>io.observe(e));
+})();
+
+/* ===== Ambient: fireflies, petals, fairies ===== */
+(function(){
+  const cv=document.getElementById('fx'),ctx=cv.getContext('2d');
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W,H,dpr;
+  function resize(){
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    W=innerWidth;H=innerHeight;
+    cv.width=W*dpr;cv.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  addEventListener('resize',resize);resize();
+  const R=(a,b)=>a+Math.random()*(b-a);
+  const small=W<640;
+
+  // fireflies
+  const flies=Array.from({length:small?26:48},()=>({
+    x:R(0,W),y:R(0,H),a:R(0,6.28),sp:R(.12,.4),ph:R(0,6.28),pr:R(.6,1.6),r:R(2,4.2)
+  }));
+  // petals
+  const petalCols=['#d9a0a4','#e3c2b6','#a38ba8','#8e9fbf','#fbf1ec'];
+  const petals=Array.from({length:small?14:24},()=>({
+    x:R(0,W),y:R(-H,H),s:R(5,11),vy:R(.25,.7),sw:R(.5,1.4),ph:R(0,6.28),rot:R(0,6.28),vr:R(-.02,.02),
+    c:petalCols[Math.floor(R(0,petalCols.length))]
+  }));
+  // fairies
+  const fairyCols=[['#fbd9e0','#d9a0a4'],['#e6d8f5','#a38ba8'],['#dbe6ff','#8e9fbf']];
+  const fairies=fairyCols.map((c,i)=>({
+    col:c,ax:R(.18,.34),ay:R(.12,.22),cx:.2+i*.3,cy:.3+i*.15,sx:R(.18,.3),sy:R(.25,.4),p:R(0,6.28),
+    x:0,y:0,dir:1,trail:[]
+  }));
+
+  function glow(x,y,r,rgb,al){
+    const g=ctx.createRadialGradient(x,y,0,x,y,r*5);
+    g.addColorStop(0,`rgba(${rgb},${al})`);
+    g.addColorStop(.25,`rgba(${rgb},${al*.4})`);
+    g.addColorStop(1,`rgba(${rgb},0)`);
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,r*5,0,6.28);ctx.fill();
+  }
+  function drawFly(f,t,step){
+    if(step){
+      f.a+=Math.sin(t*.0007+f.ph)*.05;
+      f.x+=Math.cos(f.a)*f.sp;f.y+=Math.sin(f.a)*f.sp*.8-.05;
+      if(f.x<-20)f.x=W+20;if(f.x>W+20)f.x=-20;
+      if(f.y<-20)f.y=H+20;if(f.y>H+20)f.y=-20;
+    }
+    const al=.35+.65*Math.max(0,Math.sin(t*.001*f.pr+f.ph));
+    glow(f.x,f.y,f.r,'255,236,170',al*.9);
+    ctx.fillStyle=`rgba(255,250,225,${al})`;
+    ctx.beginPath();ctx.arc(f.x,f.y,f.r*.45,0,6.28);ctx.fill();
+  }
+  function drawPetal(p,t,step){
+    if(step){
+      p.y+=p.vy;p.x+=Math.sin(t*.0008*p.sw+p.ph)*.6;p.rot+=p.vr;
+      if(p.y>H+20){p.y=-20;p.x=R(0,W);}
+    }
+    ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);
+    ctx.globalAlpha=.7;ctx.fillStyle=p.c;
+    ctx.beginPath();ctx.ellipse(0,0,p.s,p.s*.55,0,0,6.28);ctx.fill();
+    ctx.restore();
+  }
+  function drawFairy(f,t,step){
+    let px=f.x,py=f.y;
+    f.x=(f.cx+Math.cos(t*.0001*f.sx*6+f.p)*f.ax+Math.sin(t*.00003+f.p)*.1)*W;
+    f.y=(f.cy+Math.sin(t*.0001*f.sy*6+f.p*1.3)*f.ay)*H;
+    if(!px&&!py){px=f.x;py=f.y}
+    if(Math.abs(f.x-px)>.2)f.dir=f.x>px?1:-1;
+    if(step&&Math.random()<.7)f.trail.push({x:f.x+R(-4,4),y:f.y+R(-2,6),l:1,v:R(.2,.6),s:R(1,2.6)});
+    f.trail=f.trail.filter(s=>(s.l-=.012)>0);
+    f.trail.forEach(s=>{
+      s.y+=s.v*.4;
+      ctx.fillStyle=`rgba(255,240,200,${s.l*.8})`;
+      ctx.beginPath();ctx.arc(s.x,s.y,s.s*s.l,0,6.28);ctx.fill();
+    });
+    const flap=.5+.5*Math.sin(t*.022+f.p);
+    glow(f.x,f.y,6,'255,236,200',.5);
+    ctx.save();ctx.translate(f.x,f.y);ctx.scale(f.dir,1);
+    for(const m of [1,-1]){
+      ctx.save();ctx.rotate(m*(.45+flap*.5)-.3);
+      ctx.fillStyle=f.col[0];ctx.globalAlpha=.55;
+      ctx.beginPath();ctx.ellipse(-6,-9,5,12,0,0,6.28);ctx.fill();
+      ctx.globalAlpha=.4;ctx.fillStyle=f.col[1];
+      ctx.beginPath();ctx.ellipse(-5,-4,3.5,7,0,0,6.28);ctx.fill();
+      ctx.restore();
+    }
+    ctx.globalAlpha=1;
+    ctx.fillStyle=f.col[1];ctx.beginPath();ctx.ellipse(0,2,2.6,5,0,0,6.28);ctx.fill();
+    ctx.fillStyle='#fbf1ec';ctx.beginPath();ctx.arc(0,-4.5,2.6,0,6.28);ctx.fill();
+    ctx.restore();
+  }
+  function frame(t,step){
+    ctx.clearRect(0,0,W,H);
+    petals.forEach(p=>drawPetal(p,t,step));
+    flies.forEach(f=>drawFly(f,t,step));
+    fairies.forEach(f=>drawFairy(f,t,step));
+  }
+  if(reduce){frame(1000,false);addEventListener('resize',()=>frame(1000,false));return;}
+  (function loop(t){frame(t,true);requestAnimationFrame(loop);})(0);
+})();
+</script>
+</body>
+</html>
